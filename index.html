@@ -1,0 +1,75 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <header>
+            <ul>
+                <li id="selected">
+                Home</li><li>
+                Statistics</li><li>
+                Data Entry</li><li>
+                Contact</li><li>
+                FAQ</li>
+            </ul>
+        </header>
+        <content>
+            <select id="pandropdown" onchange="setPicture();">
+                <option value="covid19">Covid-19</option>
+                <option value="pan2">Fatality Rate by Age</option>
+                <option value="pan3">World View</option>
+            </select>
+            <br/>
+            <div class="mapImage">
+                <img src="covid19.png" id="panImg"/>
+            </div>
+            <div class="stats">
+                <!-- COVID STATS -->
+                <div id="covid19">
+                    <h3>Covid 19</h3>
+                    Statistics:
+                    <ul>
+                        <li>Infected: 7783 </li>
+                        <li>Deaths: 170 </li>
+                        <li>Death %: 2.18</li>
+                    </ul>
+                </div>
+                <!-- PAN 2 STATS -->
+                <div class="hidden" id="pan2">
+                    <h3>Pan 2</h3>
+                    Statistics:
+                    <ul>
+                        <li>Infected: </li>
+                        <li>Deaths: </li>
+                        <li>Death %: </li>
+                    </ul>
+                </div>
+                <!-- PAN 3 STATS -->
+                <div class="hidden" id="pan3">
+                    <h3>Pan 3</h3>
+                    Statistics:
+                    <ul>
+                        <li>Infected: </li>
+                        <li>Deaths: </li>
+                        <li>Death %: </li>
+                    </ul>
+                </div>
+            </div>
+        </content>
+        <script type="text/javascript">             
+            function setPicture() {
+                var name = document.getElementById("pandropdown");
+                var value = name.options[name.selectedIndex].value;
+                //SET IMG
+                document.getElementById("panImg").src = value + ".png";
+                //SET DATA
+                //HIDE *ALL* STATS
+                document.getElementById("covid19").classList.add("hidden");
+                document.getElementById("pan2").classList.add("hidden");
+                document.getElementById("pan3").classList.add("hidden");
+                //SHOW ONLY SELECTED STAT
+                document.getElementById(value).classList.remove("hidden");
+            }
+        </script>
+    </body>
+</html>
